@@ -1,0 +1,25 @@
+<h1>Тест фреймворка SLIM</h1>
+<div>
+	Это тестовая сборка для работы с PHP. 
+</div>
+<div>
+	<a href="/users">Список клиентов системы</a>
+</div>
+<?php if ($currentUser): ?>
+    <div><h3>Добро пожаловать, </h3> <h2><?= $currentUser['name'] ?></h2></div>
+    <form action="/session" method="post">
+        <input type="hidden" name="_METHOD" value="DELETE">
+        <input type="submit" value="Sign Out">
+    </form>
+<?php else: ?>
+<div>
+<h3>Вход</h3>
+</div>
+    <form action="/session" method="post">
+        name<input type="text" required name="user[name] "value="">
+        password<input type="password" required name="user[password] "value="">
+        <input type="submit" value="Sign In">
+		<?php var_dump($_SESSION['user']) ?>
+    </form>
+<?php endif; ?>
+<!-- END -->
